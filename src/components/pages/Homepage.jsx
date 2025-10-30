@@ -19,6 +19,7 @@ const Homepage = () => {
   const [error, setError] = useState(null);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState(null);
+  const navigate = useNavigate();
 useEffect(() => {
     loadHotelData();
     loadRooms();
@@ -63,7 +64,6 @@ const loadHotelData = async () => {
 
   if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={loadHotelData} />;
-const navigate = useNavigate();
 
 return (
     <div className="min-h-screen bg-background">
