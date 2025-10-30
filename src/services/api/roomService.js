@@ -63,12 +63,10 @@ const roomService = {
     const deleted = { ...rooms[index] };
     rooms.splice(index, 1);
     return deleted;
-  }
-};
+}
+}
 
 export default roomService;
-
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const roomService = {
   getAll: async () => {
