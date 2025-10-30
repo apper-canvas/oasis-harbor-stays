@@ -3,14 +3,15 @@ import { NavLink } from "react-router-dom";
 import ApperIcon from "@/components/ApperIcon";
 import { cn } from "@/utils/cn";
 
-const Sidebar = () => {
+function Sidebar() {
   const navItems = [
-    { path: "/", label: "Dashboard", icon: "Home" },
-    { path: "/home", label: "Homepage", icon: "Globe" },
-    { path: "/rooms", label: "Rooms", icon: "Grid3x3" },
-    { path: "/bookings", label: "Bookings", icon: "Calendar" },
-    { path: "/guests", label: "Guests", icon: "Users" },
-    { path: "/reports", label: "Reports", icon: "BarChart3" }
+    { name: 'Dashboard', path: '/admin', icon: 'LayoutDashboard' },
+    { name: 'Rooms', path: '/admin/rooms', icon: 'DoorOpen' },
+{ name: 'Dashboard', path: '/admin', icon: 'LayoutDashboard' },
+    { name: 'Rooms', path: '/admin/rooms', icon: 'DoorOpen' },
+    { name: 'Bookings', path: '/admin/bookings', icon: 'Calendar' },
+    { name: 'Guests', path: '/admin/guests', icon: 'Users' },
+    { name: 'Reports', path: '/admin/reports', icon: 'FileText' }
   ];
 
   return (

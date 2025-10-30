@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import ApperIcon from '@/components/ApperIcon';
-import Card from '@/components/atoms/Card';
-import Button from '@/components/atoms/Button';
-import Loading from '@/components/ui/Loading';
-import Error from '@/components/ui/Error';
-import GuestBookingModal from '@/components/organisms/GuestBookingModal';
-import GuestRoomCard from '@/components/molecules/GuestRoomCard';
-import hotelService from '@/services/api/hotelService';
-import roomService from '@/services/api/roomService';
-import bookingService from '@/services/api/bookingService';
-import { toast } from 'react-toastify';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import roomService from "@/services/api/roomService";
+import hotelService from "@/services/api/hotelService";
+import bookingService from "@/services/api/bookingService";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
+import Card from "@/components/atoms/Card";
+import Rooms from "@/components/pages/Rooms";
+import GuestBookingModal from "@/components/organisms/GuestBookingModal";
+import Loading from "@/components/ui/Loading";
+import Error from "@/components/ui/Error";
+import GuestRoomCard from "@/components/molecules/GuestRoomCard";
 const Homepage = () => {
   const [hotelData, setHotelData] = useState(null);
   const [rooms, setRooms] = useState([]);
@@ -61,14 +63,13 @@ const loadHotelData = async () => {
 
   if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={loadHotelData} />;
-  if (!hotelData) return null;
+const navigate = useNavigate();
 
-  return (
+return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-primary via-primary/95 to-primary/90 text-white">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <section className="relative bg-gradient-to-br from-primary via-blue-800 to-primary/90 text-white py-32 px-4">
+        <div className="max-w-4xl mx-auto text-center">
           <div className="mb-6 flex justify-center">
             <div className="h-20 w-20 rounded-full bg-gradient-to-br from-secondary to-yellow-600 flex items-center justify-center shadow-2xl">
               <ApperIcon name="Building2" size={40} className="text-white" />
@@ -83,7 +84,7 @@ const loadHotelData = async () => {
           <p className="text-lg md:text-xl mb-12 text-white/80 max-w-2xl mx-auto leading-relaxed">
             {hotelData.description}
           </p>
-<Button
+          <Button
             variant="secondary"
             size="lg"
             className="px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-secondary/50 transition-all duration-300"
@@ -320,12 +321,24 @@ const loadHotelData = async () => {
             }}
           >
             Book Now
-            <ApperIcon name="ArrowRight" size={20} className="ml-2" />
           </Button>
         </div>
-</section>
+      </section>
+
+      {/* Staff Login Section */}
+      <section className="py-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Button
+            onClick={() => navigate('/admin')}
+            variant="outline"
+            className="inline-flex items-center gap-2 text-sm"
+          >
+            <ApperIcon name="Lock" size={16} />
+            Staff Login
+          </Button>
+        </div>
+      </section>
     </div>
   );
-};
-
+}
 export default Homepage;
