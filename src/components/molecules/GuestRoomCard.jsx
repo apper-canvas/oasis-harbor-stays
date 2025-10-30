@@ -18,11 +18,24 @@ const GuestRoomCard = ({ room, onBookNow }) => {
     "Kitchen": "ChefHat"
   };
 
+const getRoomGradient = () => {
+    const type = room.type.toLowerCase();
+    if (type.includes('presidential')) {
+      return 'bg-gradient-to-br from-primary via-primary/80 to-secondary/60';
+    } else if (type.includes('suite')) {
+      return 'bg-gradient-to-br from-secondary/40 via-accent/30 to-secondary/50';
+    } else if (type.includes('deluxe')) {
+      return 'bg-gradient-to-br from-accent/30 via-primary/20 to-accent/40';
+    } else {
+      return 'bg-gradient-to-br from-primary/20 via-accent/15 to-primary/25';
+    }
+  };
+
   return (
     <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-accent/30">
-      <div className="relative h-48 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 overflow-hidden">
+      <div className={`relative h-48 overflow-hidden ${getRoomGradient()}`}>
         <div className="absolute inset-0 flex items-center justify-center">
-          <ApperIcon name="Image" size={64} className="text-gray-300 group-hover:text-accent transition-colors duration-300" />
+          <ApperIcon name="Image" size={64} className="text-white/40 group-hover:text-white/60 transition-colors duration-300" />
         </div>
         <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-lg">
           <span className="text-primary font-bold text-sm">Room {room.roomNumber}</span>
