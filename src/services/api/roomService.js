@@ -60,10 +60,10 @@ const roomService = {
     await delay(300);
     const index = rooms.findIndex(r => r.Id === parseInt(id));
     if (index === -1) throw new Error("Room not found");
-    const deleted = { ...rooms[index] };
+const deleted = { ...rooms[index] };
     rooms.splice(index, 1);
     return deleted;
-}
+  }
 }
 
 export default roomService;
