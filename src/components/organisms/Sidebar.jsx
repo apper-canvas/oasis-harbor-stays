@@ -1,9 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import ApperIcon from "@/components/ApperIcon";
 import { cn } from "@/utils/cn";
 
 function Sidebar() {
+  const navigate = useNavigate();
   const navItems = [
     { name: 'Dashboard', path: '/admin', icon: 'LayoutDashboard' },
     { name: 'Rooms', path: '/admin/rooms', icon: 'DoorOpen' },
@@ -22,8 +23,13 @@ function Sidebar() {
             <ApperIcon name="Building2" size={24} className="text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-bold">Harbor Stays</h1>
-            <p className="text-xs text-white/70">Hotel Management</p>
+<div 
+              onClick={() => navigate('/')} 
+              className="cursor-pointer hover:opacity-80 transition-opacity"
+            >
+              <h1 className="text-xl font-bold">Harbor Stays</h1>
+              <p className="text-xs text-white/70">Hotel Management</p>
+            </div>
           </div>
         </div>
       </div>
@@ -43,7 +49,7 @@ function Sidebar() {
             }
           >
             <ApperIcon name={item.icon} size={20} />
-            <span className="font-medium">{item.label}</span>
+<span className="font-medium text-white">{item.label}</span>
           </NavLink>
         ))}
       </nav>
