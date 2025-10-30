@@ -59,9 +59,9 @@ function MobileSidebar({ isOpen, onClose }) {
                     : "text-white/70 hover:bg-white/5 hover:text-white"
                 )
               }
-            >
+>
               <ApperIcon name={item.icon} size={20} />
-              <span className="font-medium">{item.label}</span>
+              <span className="font-medium">{item.name}</span>
             </NavLink>
           ))}
         </nav>

@@ -47,9 +47,9 @@ function Sidebar() {
                   : "text-white/70 hover:bg-white/5 hover:text-white"
               )
             }
-          >
+>
             <ApperIcon name={item.icon} size={20} />
-<span className="font-medium text-white">{item.label}</span>
+            <span className="font-medium text-white">{item.name}</span>
           </NavLink>
         ))}
       </nav>
