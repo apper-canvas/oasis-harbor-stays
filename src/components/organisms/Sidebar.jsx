@@ -6,6 +6,7 @@ import { cn } from "@/utils/cn";
 const Sidebar = () => {
   const navItems = [
     { path: "/", label: "Dashboard", icon: "Home" },
+    { path: "/home", label: "Homepage", icon: "Globe" },
     { path: "/rooms", label: "Rooms", icon: "Grid3x3" },
     { path: "/bookings", label: "Bookings", icon: "Calendar" },
     { path: "/guests", label: "Guests", icon: "Users" },

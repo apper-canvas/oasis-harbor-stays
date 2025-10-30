@@ -1,0 +1,178 @@
+{
+  "hotelInfo": {
+    "name": "Harbor Stays",
+    "tagline": "Where Luxury Meets Comfort",
+    "description": "Welcome to Harbor Stays, an exquisite boutique hotel nestled in the heart of the city. We pride ourselves on delivering exceptional hospitality experiences that blend timeless elegance with modern amenities. Our commitment to excellence ensures that every guest feels valued, comfortable, and truly at home. Whether you're traveling for business or leisure, Harbor Stays offers the perfect sanctuary where attention to detail and personalized service create unforgettable memories.",
+    "aboutUs": "At Harbor Stays, we believe that hospitality is an art form. Since our establishment, we have been dedicated to providing our guests with an unparalleled experience that goes beyond mere accommodation. Our team of passionate professionals works tirelessly to anticipate your needs and exceed your expectations. From our elegantly appointed rooms to our world-class facilities, every aspect of Harbor Stays has been carefully designed to ensure your comfort and satisfaction. We take pride in being more than just a hotel – we are your home away from home, where every stay becomes a cherished memory."
+  },
+  "facilities": [
+    {
+      "Id": 1,
+      "name": "Swimming Pool",
+      "icon": "Waves",
+      "description": "Luxurious outdoor pool with panoramic views, perfect for relaxation and leisure swimming throughout your stay"
+    },
+    {
+      "Id": 2,
+      "name": "Fitness Center",
+      "icon": "Dumbbell",
+      "description": "State-of-the-art gym equipment and professional trainers available to help you maintain your fitness routine"
+    },
+    {
+      "Id": 3,
+      "name": "Spa & Wellness",
+      "icon": "Sparkles",
+      "description": "Rejuvenating spa treatments, massages, and wellness programs designed to refresh your body and mind"
+    },
+    {
+      "Id": 4,
+      "name": "Fine Dining",
+      "icon": "UtensilsCrossed",
+      "description": "Award-winning restaurant serving international cuisine prepared by renowned chefs using finest ingredients"
+    },
+    {
+      "Id": 5,
+      "name": "Parking",
+      "icon": "Car",
+      "description": "Secure underground parking with valet service and electric vehicle charging stations available"
+    },
+    {
+      "Id": 6,
+      "name": "High-Speed WiFi",
+      "icon": "Wifi",
+      "description": "Complimentary ultra-fast internet connectivity throughout the hotel for work and entertainment"
+    },
+    {
+      "Id": 7,
+      "name": "Cocktail Bar",
+      "icon": "Wine",
+      "description": "Sophisticated lounge bar offering premium spirits, signature cocktails, and live music entertainment"
+    },
+    {
+      "Id": 8,
+      "name": "Conference Rooms",
+      "icon": "Presentation",
+      "description": "Modern meeting spaces with advanced technology for business conferences and special events"
+    }
+  ],
+  "services": [
+    {
+      "Id": 1,
+      "name": "24/7 Room Service",
+      "icon": "Bell",
+      "description": "Round-the-clock dining and beverage service delivered directly to your room"
+    },
+    {
+      "Id": 2,
+      "name": "Laundry & Dry Cleaning",
+      "icon": "Shirt",
+      "description": "Professional laundry services with same-day delivery for your convenience"
+    },
+    {
+      "Id": 3,
+      "name": "Airport Transfer",
+      "icon": "Plane",
+      "description": "Complimentary shuttle service and premium car hire for airport pickups and drop-offs"
+    },
+    {
+      "Id": 4,
+      "name": "Concierge Services",
+      "icon": "UserCheck",
+      "description": "Expert concierge team to assist with reservations, tickets, and local recommendations"
+    },
+    {
+      "Id": 5,
+      "name": "Tour Assistance",
+      "icon": "Map",
+      "description": "Curated city tours and excursion planning to help you explore local attractions"
+    },
+    {
+      "Id": 6,
+      "name": "24/7 Support",
+      "icon": "Headphones",
+      "description": "Dedicated guest support team available anytime to address your needs and concerns"
+    }
+  ],
+  "reviews": [
+    {
+      "Id": 1,
+      "guestName": "Sarah Mitchell",
+      "rating": 5,
+      "comment": "Absolutely exceptional experience! The attention to detail, friendly staff, and luxurious amenities exceeded all expectations. The spa was divine and the restaurant food was outstanding. Will definitely return!",
+      "date": "2024-12-15"
+    },
+    {
+      "Id": 2,
+      "guestName": "James Robertson",
+      "rating": 5,
+      "comment": "Perfect location with impeccable service. The rooms are spacious and elegantly designed. The concierge went above and beyond to arrange our city tours. Harbor Stays truly understands hospitality.",
+      "date": "2024-12-10"
+    },
+    {
+      "Id": 3,
+      "guestName": "Maria Garcia",
+      "rating": 5,
+      "comment": "A hidden gem! From the moment we arrived, we felt welcomed and valued. The pool area is stunning, and the breakfast buffet offers incredible variety. This is now our go-to hotel in the city.",
+      "date": "2024-12-05"
+    },
+    {
+      "Id": 4,
+      "guestName": "David Chen",
+      "rating": 4,
+      "comment": "Excellent hotel with modern facilities and professional staff. The business center was perfect for my work needs, and the fitness center had everything I needed. Highly recommend for business travelers.",
+      "date": "2024-11-28"
+    },
+    {
+      "Id": 5,
+      "guestName": "Emma Thompson",
+      "rating": 5,
+      "comment": "Celebrated our anniversary here and it was magical! The staff surprised us with champagne and flowers. The romantic ambiance, comfortable rooms, and exceptional service made our stay unforgettable.",
+      "date": "2024-11-20"
+    },
+    {
+      "Id": 6,
+      "guestName": "Michael O'Brien",
+      "rating": 5,
+      "comment": "Outstanding value for money! Everything from check-in to check-out was seamless. The location is convenient, rooms are pristine, and the amenities rival five-star hotels. Harbor Stays sets the standard.",
+      "date": "2024-11-15"
+    }
+  ],
+  "gallery": [
+    {
+      "Id": 1,
+      "title": "Hotel Exterior",
+      "description": "Modern architectural design with elegant facade",
+      "imageUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"
+    },
+    {
+      "Id": 2,
+      "title": "Luxury Suite",
+      "description": "Spacious rooms with premium furnishings and city views",
+      "imageUrl": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80"
+    },
+    {
+      "Id": 3,
+      "title": "Swimming Pool",
+      "description": "Outdoor infinity pool with lounge area",
+      "imageUrl": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=800&q=80"
+    },
+    {
+      "Id": 4,
+      "title": "Fine Dining Restaurant",
+      "description": "Elegant dining experience with gourmet cuisine",
+      "imageUrl": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
+    },
+    {
+      "Id": 5,
+      "title": "Spa & Wellness",
+      "description": "Tranquil spa facilities for ultimate relaxation",
+      "imageUrl": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80"
+    },
+    {
+      "Id": 6,
+      "title": "Lobby",
+      "description": "Grand entrance with sophisticated interior design",
+      "imageUrl": "https://images.unsplash.com/photo-1549294413-26f195200c16?w=800&q=80"
+    }
+  ]
+}

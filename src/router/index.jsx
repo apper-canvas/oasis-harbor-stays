@@ -4,6 +4,7 @@ import Layout from "@/components/organisms/Layout";
 
 const mainRoutes = [
   { path: "", index: true, element: lazy(() => import("@/components/pages/Dashboard")) },
+  { path: "home", element: lazy(() => import("@/components/pages/Homepage")) },
   { path: "rooms", element: lazy(() => import("@/components/pages/Rooms")) },
   { path: "bookings", element: lazy(() => import("@/components/pages/Bookings")) },
   { path: "guests", element: lazy(() => import("@/components/pages/Guests")) },
