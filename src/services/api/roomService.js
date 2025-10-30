@@ -10,6 +10,72 @@ const roomService = {
     return [...rooms];
   },
 
+  getAvailableRooms: async () => {
+    await delay(300);
+    return rooms.filter(r => r.status === "available").map(r => ({ ...r }));
+  },
+
+  getById: async (id) => {
+    await delay(200);
+    const room = rooms.find(r => r.Id === parseInt(id));
+    return room ? { ...room } : null;
+  },
+
+  getByFloor: async (floor) => {
+    await delay(300);
+    return rooms.filter(r => r.floor === parseInt(floor)).map(r => ({ ...r }));
+  },
+
+  getByStatus: async (status) => {
+    await delay(300);
+    return rooms.filter(r => r.status === status).map(r => ({ ...r }));
+  },
+
+  getByType: async (type) => {
+    await delay(300);
+    return rooms.filter(r => r.type === type).map(r => ({ ...r }));
+  },
+
+  create: async (room) => {
+    await delay(400);
+    const maxId = Math.max(...rooms.map(r => r.Id), 0);
+    const newRoom = {
+      ...room,
+      Id: maxId + 1,
+      lastCleaned: new Date().toISOString()
+    };
+    rooms.push(newRoom);
+    return { ...newRoom };
+  },
+
+  update: async (id, data) => {
+    await delay(400);
+    const index = rooms.findIndex(r => r.Id === parseInt(id));
+    if (index === -1) throw new Error("Room not found");
+    rooms[index] = { ...rooms[index], ...data };
+    return { ...rooms[index] };
+  },
+
+  delete: async (id) => {
+    await delay(300);
+    const index = rooms.findIndex(r => r.Id === parseInt(id));
+    if (index === -1) throw new Error("Room not found");
+    const deleted = { ...rooms[index] };
+    rooms.splice(index, 1);
+    return deleted;
+  }
+};
+
+export default roomService;
+
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+const roomService = {
+  getAll: async () => {
+    await delay(300);
+    return [...rooms];
+  },
+
   getById: async (id) => {
     await delay(200);
     const room = rooms.find(r => r.Id === parseInt(id));

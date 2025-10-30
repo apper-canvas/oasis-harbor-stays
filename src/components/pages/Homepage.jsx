@@ -4,18 +4,24 @@ import Card from '@/components/atoms/Card';
 import Button from '@/components/atoms/Button';
 import Loading from '@/components/ui/Loading';
 import Error from '@/components/ui/Error';
+import GuestBookingModal from '@/components/organisms/GuestBookingModal';
+import GuestRoomCard from '@/components/molecules/GuestRoomCard';
 import hotelService from '@/services/api/hotelService';
-
+import roomService from '@/services/api/roomService';
+import bookingService from '@/services/api/bookingService';
+import { toast } from 'react-toastify';
 const Homepage = () => {
   const [hotelData, setHotelData] = useState(null);
+  const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  useEffect(() => {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState(null);
+useEffect(() => {
     loadHotelData();
+    loadRooms();
   }, []);
-
-  const loadHotelData = async () => {
+const loadHotelData = async () => {
     try {
       setLoading(true);
       setError(null);
@@ -25,6 +31,31 @@ const Homepage = () => {
       setError(err.message || 'Failed to load hotel information');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadRooms = async () => {
+    try {
+      const availableRooms = await roomService.getAvailableRooms();
+      setRooms(availableRooms);
+    } catch (err) {
+      console.error('Failed to load rooms:', err);
+    }
+  };
+
+  const handleBookNow = (room) => {
+    setSelectedRoom(room);
+    setIsBookingModalOpen(true);
+  };
+
+  const handleBookingSubmit = async (bookingData) => {
+    try {
+      const result = await bookingService.createGuestBooking(bookingData);
+      toast.success('Booking confirmed! Check your email for confirmation details.');
+      return result;
+    } catch (err) {
+      toast.error(err.message || 'Failed to create booking. Please try again.');
+      return null;
     }
   };
 
@@ -52,11 +83,16 @@ const Homepage = () => {
           <p className="text-lg md:text-xl mb-12 text-white/80 max-w-2xl mx-auto leading-relaxed">
             {hotelData.description}
           </p>
-          <Button
+<Button
             variant="secondary"
             size="lg"
             className="px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-secondary/50 transition-all duration-300"
-            onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+            onClick={() => {
+              const bookingSection = document.getElementById('booking-section');
+              if (bookingSection) {
+                bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
           >
             Explore Our Hotel
             <ApperIcon name="ChevronDown" size={20} className="ml-2" />
@@ -106,8 +142,54 @@ const Homepage = () => {
             ))}
           </div>
         </div>
+</section>
+
+      {/* Guest Booking Section */}
+      <section id="booking-section" className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-block bg-accent/10 rounded-full px-6 py-2 mb-4">
+              <span className="text-accent font-semibold text-sm uppercase tracking-wider">
+                Book Your Stay
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+              Browse Available Rooms
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Choose from our selection of comfortable and well-appointed rooms
+            </p>
+          </div>
+
+          {rooms.length === 0 ? (
+            <div className="text-center py-12">
+              <ApperIcon name="Home" size={64} className="text-gray-300 mx-auto mb-4" />
+              <p className="text-gray-600 text-lg">No rooms available at the moment</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {rooms.map(room => (
+                <GuestRoomCard
+                  key={room.Id}
+                  room={room}
+                  onBookNow={handleBookNow}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </section>
 
+      <GuestBookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => {
+          setIsBookingModalOpen(false);
+          setSelectedRoom(null);
+        }}
+        onSubmit={handleBookingSubmit}
+        selectedRoom={selectedRoom}
+        rooms={rooms}
+      />
       {/* Services Section */}
       <section className="py-20 px-4 max-w-7xl mx-auto">
         <div className="text-center mb-16">
@@ -226,16 +308,22 @@ const Homepage = () => {
           <p className="text-xl text-white/90 mb-8">
             Book your stay at Harbor Stays today and discover the perfect blend of elegance, comfort, and exceptional service
           </p>
-          <Button
+<Button
             variant="secondary"
             size="lg"
             className="px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-secondary/50 transition-all duration-300"
+            onClick={() => {
+              const bookingSection = document.getElementById('booking-section');
+              if (bookingSection) {
+                bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
           >
             Book Now
             <ApperIcon name="ArrowRight" size={20} className="ml-2" />
           </Button>
         </div>
-      </section>
+</section>
     </div>
   );
 };

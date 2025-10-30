@@ -1,8 +1,11 @@
 import bookingsData from "../mockData/bookings.json";
+import roomsData from "../mockData/rooms.json";
 
 let bookings = [...bookingsData];
+let rooms = [...roomsData];
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 const bookingService = {
   getAll: async () => {
     await delay(300);
@@ -57,6 +60,39 @@ const bookingService = {
       createdAt: new Date().toISOString(),
       status: "confirmed"
     };
+    bookings.push(newBooking);
+    return { ...newBooking };
+  },
+
+  createGuestBooking: async (bookingData) => {
+    await delay(400);
+    
+    const room = rooms.find(r => r.Id === parseInt(bookingData.roomId));
+    if (!room) {
+      throw new Error("Selected room not found");
+    }
+    
+    if (room.status !== "available") {
+      throw new Error("Selected room is not available");
+    }
+
+    const maxId = Math.max(...bookings.map(b => b.Id), 0);
+    const newBooking = {
+      Id: maxId + 1,
+      fullName: bookingData.fullName,
+      email: bookingData.email,
+      phone: bookingData.phone,
+      roomId: bookingData.roomId,
+      checkIn: bookingData.checkIn,
+      checkOut: bookingData.checkOut,
+      numberOfGuests: bookingData.numberOfGuests,
+      specialRequests: bookingData.specialRequests || "",
+      totalAmount: bookingData.totalAmount,
+      status: "confirmed",
+      paymentStatus: "pending",
+      createdAt: new Date().toISOString()
+    };
+    
     bookings.push(newBooking);
     return { ...newBooking };
   },
