@@ -51,60 +51,6 @@ const roomService = {
   update: async (id, data) => {
     await delay(400);
     const index = rooms.findIndex(r => r.Id === parseInt(id));
-    if (index === -1) throw new Error("Room not found");
-    rooms[index] = { ...rooms[index], ...data };
-    return { ...rooms[index] };
-  },
-
-  delete: async (id) => {
-    await delay(300);
-    const index = rooms.findIndex(r => r.Id === parseInt(id));
-    if (index === -1) throw new Error("Room not found");
-const deleted = { ...rooms[index] };
-    rooms.splice(index, 1);
-    return deleted;
-  }
-}
-
-export default roomService;
-
-const roomService = {
-  getAll: async () => {
-    await delay(300);
-    return [...rooms];
-  },
-
-  getById: async (id) => {
-    await delay(200);
-    const room = rooms.find(r => r.Id === parseInt(id));
-    return room ? { ...room } : null;
-  },
-
-  getByStatus: async (status) => {
-    await delay(300);
-    return rooms.filter(r => r.status === status).map(r => ({ ...r }));
-  },
-
-  getByFloor: async (floor) => {
-    await delay(300);
-    return rooms.filter(r => r.floor === floor).map(r => ({ ...r }));
-  },
-
-  create: async (room) => {
-    await delay(400);
-    const maxId = Math.max(...rooms.map(r => r.Id), 0);
-    const newRoom = {
-      ...room,
-      Id: maxId + 1,
-      lastCleaned: new Date().toISOString()
-    };
-    rooms.push(newRoom);
-    return { ...newRoom };
-  },
-
-  update: async (id, data) => {
-    await delay(400);
-    const index = rooms.findIndex(r => r.Id === parseInt(id));
     if (index !== -1) {
       rooms[index] = { ...rooms[index], ...data };
       return { ...rooms[index] };
@@ -130,10 +76,11 @@ const roomService = {
     await delay(400);
     const index = rooms.findIndex(r => r.Id === parseInt(id));
     if (index !== -1) {
+      const deleted = { ...rooms[index] };
       rooms.splice(index, 1);
-      return true;
+      return deleted;
     }
-    return false;
+    throw new Error("Room not found");
   },
 
   getStatistics: async () => {
